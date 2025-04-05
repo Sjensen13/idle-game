@@ -1,0 +1,84 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int        @id @default(autoincrement())
+  email     String     @unique
+  password  String
+  character Character[]
+  coins     Int          @default(0)
+}
+
+model Character {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+
+  name      String
+  species   String?
+  type      String?
+  level     Int      @default(1)
+  xp        Int      @default(0)
+  strength  Int
+  health    Int
+  mana      Int
+
+  weaponId  Int?
+  chestId   Int?
+  pantsId   Int?
+  bootsId   Int?
+  glovesId  Int?
+  helmId    Int?
+  ringId    Int?
+
+  weapon    Item?    @relation("Weapon", fields: [weaponId], references: [id])
+  chest     Item?    @relation("Chest", fields: [chestId], references: [id])
+  pants     Item?    @relation("Pants", fields: [pantsId], references: [id])
+  boots     Item?    @relation("Boots", fields: [bootsId], references: [id])
+  gloves    Item?    @relation("Gloves", fields: [glovesId], references: [id])
+  helm      Item?    @relation("Helm", fields: [helmId], references: [id])
+  ring      Item?    @relation("Ring", fields: [ringId], references: [id])
+
+  actions   IdleAction[]
+}
+
+model Item {
+  id        Int      @id @default(autoincrement())
+  name      String
+  type      String   // "weapon", "chest", "ring", etc.
+  rarity    String
+  bonusStr  Int
+  bonusHp   Int
+
+  // Backward relations
+  weaponFor   Character[] @relation("Weapon")
+  chestFor    Character[] @relation("Chest")
+  pantsFor    Character[] @relation("Pants")
+  bootsFor    Character[] @relation("Boots")
+  glovesFor   Character[] @relation("Gloves")
+  helmFor     Character[] @relation("Helm")
+  ringFor     Character[] @relation("Ring")
+}
+
+model IdleAction {
+  id           Int        @id @default(autoincrement())
+  characterId  Int
+  character    Character  @relation(fields: [characterId], references: [id])
+  actionType   String
+  startedAt    DateTime
+  durationMin  Int
+  completedAt  DateTime?
+  isActive     Boolean    @default(true)
+}
