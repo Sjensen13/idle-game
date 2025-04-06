@@ -4,7 +4,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var authRouter = require('./routes/auth');
 var gachaRouter = require('./routes/character');
-const rewardRouter = require('./routes/items');
+var rewardRouter = require('./routes/items');
+var characterEquip = require('./routes/characterEquip');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -23,5 +24,6 @@ app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/character', gachaRouter);
 app.use('/item', rewardRouter);
+app.use('/character/equip', characterEquip);
 
 module.exports = app;

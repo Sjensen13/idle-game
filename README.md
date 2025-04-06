@@ -1,1 +1,27 @@
 # idle-game
+Level-based Tower/wall defense 
+- Different kinds of enemies come walking down your kingdom wall 
+- Your wall HP is based on the HP of your total characters 
+  - You can only have up to 5 characters on your wall for defense 
+- Every level has a wave of monsters, and at the end, you fight a stronger opponent 
+  - Every 5 or 10 levels, you fight a boss 
+- Enemies get stronger, and different enemies start showing up the farther you proceed 
+- Every character has a basic attack and 2 ults that cost mana 
+  - One ult is more for attacking, and the other is for support 
+- The idle part of the game is that your characters fight monsters and collect rewards 
+  - The reward amount is based on your level
+  - You can get coins, weapons, and armor
+  - You can only collect idle rewards for up to 48hrs
+- Use coins to upgrade strength, HP, and mana regen, upgrade weapons, and new characters 
+- Character stat increase is based on the character, but every level gives the same amount of increase 
+  - Every time you level up your HP, you get X amount of HP, but that X amount changes based on each character 
+- The character level is the average of hp, strength, and mana stats → all decimal rounds down 
+  - Strength level 5, hp level 7, mana level 2 → character level 4
+- Characters gacha and starting character 
+  - You start with the basic character, Roland, with basic stats 
+  - There are many characters you can earn through the gacha system
+    - You can only use the gacha once a day → still deciding if I should do this
+    - Each character you can get can have 3 different rarities that increase the stats on that character 
+    - Each character has unique stats that can be upgraded
+    - Each character has their basic weapon (sword, bow, staff, gun) and starts with no armor (chest, pants, boots, gloves, helm, ring)
+      - You can collect weapons and armor by clearing levels and by the idle system

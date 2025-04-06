@@ -48,7 +48,7 @@ const bonusHp = Math.round(base.health * scale);
     };
 }
 
-// POST /reward/item
+// POST /item
 router.post('/', async (req, res) => {
     try {
         const itemData = generateRandomItem();
